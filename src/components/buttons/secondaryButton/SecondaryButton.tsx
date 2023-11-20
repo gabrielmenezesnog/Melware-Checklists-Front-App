@@ -1,17 +1,21 @@
 import React from 'react';
 import {Pressable, Text} from 'react-native';
 
-import {whiteTheme} from './Styles';
+import {white, dark} from './Styles';
+import {useSelector} from 'react-redux';
 
-interface SecondaryButtonProps {
+interface iSecondaryButton {
   text: string;
   onPress: () => void;
 }
 
-const SecondaryButton: React.FC<SecondaryButtonProps> = ({text, onPress}) => {
+const SecondaryButton: React.FC<iSecondaryButton> = ({text, onPress}) => {
+  const theme = useSelector((state: any) => state.themeReducer.theme);
+  const style = theme === 'dark' ? dark : white;
+
   return (
-    <Pressable onPress={onPress} style={whiteTheme.mainContainer}>
-      <Text style={whiteTheme.buttonText}>{text}</Text>
+    <Pressable onPress={onPress} style={style.mainContainer}>
+      <Text style={style.buttonText}>{text}</Text>
     </Pressable>
   );
 };

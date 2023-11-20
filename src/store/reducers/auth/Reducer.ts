@@ -4,7 +4,7 @@ import {Reducer} from '@reduxjs/toolkit';
 import {userActionTypes} from './ActionTypes';
 
 // Interfaces
-import {AuthState} from '../../../interfaces/user/iAuthTypes';
+import {AuthState} from '../../../interface/user/iAuthTypes';
 
 const initialState: AuthState = {
   response: null,

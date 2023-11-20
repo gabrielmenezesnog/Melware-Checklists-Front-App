@@ -1,52 +1,68 @@
-import React from 'react';
-import {Image, View} from 'react-native';
-
-// Libs
-import {Dispatch, AnyAction} from '@reduxjs/toolkit';
+import React, {useState} from 'react';
+import {Image, Pressable, View} from 'react-native';
+import {useSelector} from 'react-redux';
 
 // Styles;
-import {whiteTheme} from './Styles';
+import {white, dark} from './Styles';
 import {defaultTheme} from '../../../theme/defaultTheme';
 
-// Redux
-import {connect} from 'react-redux';
-import bindActionCreators from 'react-redux/es/utils/bindActionCreators';
-
 // Components
-import ChecklistsLogo from '../../../components/logo/checklists/ChecklistsLogo';
-import MelwareLogo from '../../../components/logo/melware/MelwareLogo';
+import ChecklistsLogo from '../../../components/svg/logo/checklists/ChecklistsLogo';
+import MelwareLogo from '../../../components/svg/logo/melware/MelwareLogo';
 import PrimaryButton from '../../../components/buttons/primaryButton/PrimaryButton';
 import SecondaryButton from '../../../components/buttons/secondaryButton/SecondaryButton';
+import ConfigIcon from '../../../components/svg/icons/wireIcon/WireIcon';
+import ConfigModal from '../../../components/modal/ConfigModal';
 
 export const Checklists = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const onPressSignIn = () => {};
   const onPressSignUp = () => {};
+  const onPressConfig = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const theme = useSelector((state: any) => state.themeReducer.theme);
+  const style = theme === 'dark' ? dark : white;
+
+  const path =
+    theme === 'dark'
+      ? require('../../../../public/img/backgroundDetail-blackTheme.png')
+      : require('../../../../public/img/backgroundDetail-whiteTheme.png');
 
   return (
-    <View style={whiteTheme.mainContainer}>
-      <View style={whiteTheme.checklistsLogoContainer}>
+    <View style={style.mainContainer}>
+      {modalVisible && (
+        <>
+          <ConfigModal
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
+        </>
+      )}
+
+      <Pressable style={style.configIcon} onPress={() => onPressConfig()}>
+        <ConfigIcon />
+      </Pressable>
+
+      <View style={style.checklistsLogoContainer}>
         <ChecklistsLogo />
       </View>
 
       <SecondaryButton text={'entrar'} onPress={() => onPressSignIn()} />
 
-      <View style={{marginBottom: defaultTheme.size.size_s1}} />
+      <View style={{marginBottom: defaultTheme.size.size_s12}} />
 
       <PrimaryButton text={'criar conta'} onPress={() => onPressSignUp()} />
 
-      <View style={whiteTheme.melwareLogoContainer}>
+      <View style={style.melwareLogoContainer}>
         <MelwareLogo />
       </View>
 
-      <Image
-        source={require('../../../../public/img/backgroundDetail-whiteTheme.png')}
-        style={whiteTheme.backgroundDetail}
-      />
+      <Image source={path} style={style.backgroundDetail} />
     </View>
   );
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
-  bindActionCreators({}, dispatch);
-
-export default connect(null, mapDispatchToProps)(Checklists);
+export default Checklists;
