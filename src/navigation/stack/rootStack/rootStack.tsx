@@ -18,7 +18,7 @@ export const RootStackStackNavigation = ({loggedIn}: {loggedIn: boolean}) => {
         <RootStack.Screen name="Dashboard" component={Dashboard} />
       ) : (
         <RootStack.Screen
-          name="LoginScreen"
+          name="CheckLists"
           component={InitialStackStackNavigation}
         />
       )}
