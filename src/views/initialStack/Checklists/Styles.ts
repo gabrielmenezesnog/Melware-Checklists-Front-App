@@ -12,7 +12,7 @@ export const white = StyleSheet.create({
   },
 
   checklistsLogoContainer: {
-    marginBottom: defaultTheme.size.size_s8,
+    marginBottom: defaultTheme.size.size_s120,
   },
 
   melwareLogoContainer: {
@@ -23,7 +23,9 @@ export const white = StyleSheet.create({
   backgroundDetail: {
     position: 'absolute',
     zIndex: -2,
-    right: '-90%',
+    right: '-165%',
+    height: '100%',
+    borderRadius: 500,
   },
 
   configIcon: {
@@ -44,7 +46,7 @@ export const dark = StyleSheet.create({
   },
 
   checklistsLogoContainer: {
-    marginBottom: defaultTheme.size.size_s8,
+    marginBottom: defaultTheme.size.size_s120,
   },
 
   melwareLogoContainer: {
@@ -55,7 +57,9 @@ export const dark = StyleSheet.create({
   backgroundDetail: {
     position: 'absolute',
     zIndex: -2,
-    right: '-90%',
+    right: '-165%',
+    height: '100%',
+    borderRadius: 500,
   },
 
   configIcon: {

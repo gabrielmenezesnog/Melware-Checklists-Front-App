@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {Image, Pressable, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
+// Libs
+import {useNavigation} from '@react-navigation/native';
+
 // Language
 import i18n from '../../../i18n';
 
@@ -16,6 +19,16 @@ import PrimaryButton from '../../../components/buttons/primaryButton/PrimaryButt
 import SecondaryButton from '../../../components/buttons/secondaryButton/SecondaryButton';
 import ConfigIcon from '../../../components/svg/icons/wireIcon/WireIcon';
 import ConfigModal from '../../../components/modal/ConfigModal';
+import {StackNavigationProp} from '@react-navigation/stack';
+
+type RootStackParamList = {
+  SignIn: undefined;
+};
+
+type SignInScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'SignIn'
+>;
 
 export const Checklists = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,7 +40,11 @@ export const Checklists = () => {
   const theme = useSelector((state: any) => state.themeReducer.theme);
   const style = theme === 'dark' ? dark : white;
 
-  const onPressSignIn = () => {};
+  const navigation = useNavigation<SignInScreenNavigationProp>();
+
+  const onPressSignIn = () => {
+    navigation.navigate('SignIn');
+  };
   const onPressSignUp = () => {};
   const onPressConfig = () => {
     setModalVisible(!modalVisible);

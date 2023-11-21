@@ -5,5 +5,10 @@
     "configurations": "Configurações",
     "theme": "Tema",
     "language": "Idioma"
+  },
+
+  "signUpScreen": {
+    "sign_in": "entrar",
+    "continue": "continuar"
   }
 }

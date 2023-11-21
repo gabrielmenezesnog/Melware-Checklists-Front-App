@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 // Views da stack
 import Login from '../../../views/initialStack/Login/Login';
 import Checklists from '../../../views/initialStack/Checklists/Checklists';
+import SignIn from '../../../views/initialStack/SignIn/SignIn';
 
 export const InitialStackStackNavigation = () => {
   const InitialStack = createStackNavigator();
@@ -13,10 +14,26 @@ export const InitialStackStackNavigation = () => {
       initialRouteName="Checklists"
       screenOptions={{
         headerShown: false,
+        detachPreviousScreen: false,
+        cardStyleInterpolator: ({current, layouts}) => {
+          return {
+            cardStyle: {
+              transform: [
+                {
+                  translateX: current.progress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [layouts.screen.width, 0],
+                  }),
+                },
+              ],
+            },
+          };
+        },
       }}>
       <InitialStack.Screen name="Checklists" component={Checklists} />
 
       <InitialStack.Screen name="Login" component={Login} />
+      <InitialStack.Screen name="SignIn" component={SignIn} />
     </InitialStack.Navigator>
   );
 };
