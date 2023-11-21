@@ -2,7 +2,6 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 // Views da stack
-import Login from '../../../views/initialStack/Login/Login';
 import Checklists from '../../../views/initialStack/Checklists/Checklists';
 import SignIn from '../../../views/initialStack/SignIn/SignIn';
 
@@ -32,7 +31,6 @@ export const InitialStackStackNavigation = () => {
       }}>
       <InitialStack.Screen name="Checklists" component={Checklists} />
 
-      <InitialStack.Screen name="Login" component={Login} />
       <InitialStack.Screen name="SignIn" component={SignIn} />
     </InitialStack.Navigator>
   );
