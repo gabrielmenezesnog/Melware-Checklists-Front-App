@@ -129,6 +129,7 @@ export const dark = StyleSheet.create({
   showPassword: {
     width: '100%',
     marginTop: defaultTheme.size.size_s12,
+    alignItems: 'flex-end',
   },
 
   showPasswordText: {
