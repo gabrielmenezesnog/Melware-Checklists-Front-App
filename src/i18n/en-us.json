@@ -5,5 +5,13 @@
     "configurations": "Configurations",
     "theme": "Theme",
     "language": "Language"
+  },
+  "signInScreen": {
+    "sign_in": "sign in",
+    "email": "email",
+    "password": "password",
+    "show_password": "show password",
+    "hide_password": "hide password",
+    "continue": "continue"
   }
 }

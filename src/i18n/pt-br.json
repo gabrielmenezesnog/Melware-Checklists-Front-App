@@ -7,8 +7,12 @@
     "language": "Idioma"
   },
 
-  "signUpScreen": {
+  "signInScreen": {
     "sign_in": "entrar",
+    "email": "email",
+    "password": "senha",
+    "show_password": "mostrar senha",
+    "hide_password": "ocultar senha",
     "continue": "continuar"
   }
 }

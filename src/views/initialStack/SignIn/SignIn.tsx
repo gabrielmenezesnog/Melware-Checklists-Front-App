@@ -45,15 +45,19 @@ export const SignIn = () => {
       </Pressable>
 
       <View style={style.form}>
-        <Text style={style.formText}>{i18n.t('signUpScreen.sign_in')}</Text>
+        <Text style={style.formText}>{i18n.t('signInScreen.sign_in')}</Text>
       </View>
 
-      <CustomTextInput placeholder="Email" value={email} setValue={setEmail} />
+      <CustomTextInput
+        placeholder={i18n.t('signInScreen.email')}
+        value={email}
+        setValue={setEmail}
+      />
 
       <View style={{marginBottom: defaultTheme.size.size_s20}} />
 
       <CustomTextInput
-        placeholder="Senha"
+        placeholder={i18n.t('signInScreen.password')}
         value={password}
         setValue={setPassword}
         isPassword={isPasswordNotVisible}
@@ -63,14 +67,16 @@ export const SignIn = () => {
         style={style.showPassword}
         onPress={() => setIsPasswordNotVisible(!isPasswordNotVisible)}>
         <Text style={style.showPasswordText}>
-          {isPasswordNotVisible ? 'mostrar senha' : 'ocultar senha'}
+          {isPasswordNotVisible
+            ? i18n.t('signInScreen.show_password')
+            : i18n.t('signInScreen.hide_password')}
         </Text>
       </Pressable>
 
       <View style={{marginBottom: defaultTheme.size.size_s40}} />
 
       <PrimaryButton
-        text={i18n.t('signUpScreen.continue')}
+        text={i18n.t('signInScreen.continue')}
         onPress={() => onPressContinue()}
       />
 
