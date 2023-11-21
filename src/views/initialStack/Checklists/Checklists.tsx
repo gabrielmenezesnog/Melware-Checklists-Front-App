@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {Image, Pressable, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
+// Language
+import i18n from '../../../i18n';
+
 // Styles;
 import {white, dark} from './Styles';
 import {defaultTheme} from '../../../theme/defaultTheme';
@@ -17,14 +20,18 @@ import ConfigModal from '../../../components/modal/ConfigModal';
 export const Checklists = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
+  const language = useSelector((state: any) => state.languageReducer.language);
+  i18n.defaultLocale = language;
+  i18n.locale = language;
+
+  const theme = useSelector((state: any) => state.themeReducer.theme);
+  const style = theme === 'dark' ? dark : white;
+
   const onPressSignIn = () => {};
   const onPressSignUp = () => {};
   const onPressConfig = () => {
     setModalVisible(!modalVisible);
   };
-
-  const theme = useSelector((state: any) => state.themeReducer.theme);
-  const style = theme === 'dark' ? dark : white;
 
   const path =
     theme === 'dark'
@@ -50,11 +57,17 @@ export const Checklists = () => {
         <ChecklistsLogo />
       </View>
 
-      <SecondaryButton text={'entrar'} onPress={() => onPressSignIn()} />
+      <SecondaryButton
+        text={i18n.t('initialscreen.sign_in')}
+        onPress={() => onPressSignIn()}
+      />
 
       <View style={{marginBottom: defaultTheme.size.size_s12}} />
 
-      <PrimaryButton text={'criar conta'} onPress={() => onPressSignUp()} />
+      <PrimaryButton
+        text={i18n.t('initialscreen.sign_up')}
+        onPress={() => onPressSignUp()}
+      />
 
       <View style={style.melwareLogoContainer}>
         <MelwareLogo />

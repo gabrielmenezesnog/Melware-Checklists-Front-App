@@ -1,0 +1,9 @@
+{
+  "initialscreen": {
+    "sign_in": "sign in",
+    "sign_up": "sign up",
+    "configurations": "Configurations",
+    "theme": "Theme",
+    "language": "Language"
+  }
+}

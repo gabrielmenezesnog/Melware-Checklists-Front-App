@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Modal, Text, Pressable, View} from 'react-native';
 
+// Language
+import i18n from '../../i18n';
+
 // Styles;
 import {white, dark} from './Styles';
 import CloseIcon from '../svg/icons/closeIcon/CloseIcon';
@@ -10,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // Redux
 import {useDispatch} from 'react-redux';
 import {ThemeActions} from '../../store/reducers/theme/Actions';
+import {LanguageActions} from '../../store/reducers/language/Actions';
 
 interface iConfigModal {
   modalVisible: boolean;
@@ -32,25 +36,41 @@ const ConfigModal: React.FC<iConfigModal> = ({
     const getThemeFromStorage = async () => {
       try {
         const storedTheme = await AsyncStorage.getItem('theme');
-        const storedLanguage = await AsyncStorage.getItem('language');
         if (storedTheme !== null) {
           setTheme(storedTheme);
           dispatch(ThemeActions.setTheme({theme: storedTheme}));
         } else {
           setTheme('white');
         }
-
-        if (storedLanguage !== null) {
-          setLanguage(storedLanguage);
-        } else {
-          setLanguage('pt-BR');
-        }
       } catch (error) {
         console.error('Erro ao obter o tema do AsyncStorage:', error);
       }
     };
 
+    const getLanguageFromStorage = async () => {
+      try {
+        const storedLanguage = await AsyncStorage.getItem('language');
+
+        if (storedLanguage !== null) {
+          setLanguage(storedLanguage);
+
+          i18n.defaultLocale = storedLanguage;
+          i18n.locale = storedLanguage;
+
+          dispatch(LanguageActions.setLanguage({language: storedLanguage}));
+        } else {
+          setLanguage('pt-BR');
+          dispatch(LanguageActions.setLanguage({language: 'pt-BR'}));
+          i18n.defaultLocale = 'pt-BR';
+          i18n.locale = 'pt-BR';
+        }
+      } catch (error) {
+        console.error('Erro ao obter a linguagem do AsyncStorage:', error);
+      }
+    };
+
     getThemeFromStorage();
+    getLanguageFromStorage();
   }, [dispatch]);
 
   const changeTheme = async () => {
@@ -68,9 +88,17 @@ const ConfigModal: React.FC<iConfigModal> = ({
   };
 
   const handlSetLanguage = async (languageString: string) => {
+    await AsyncStorage.setItem('language', languageString);
+
+    const newLanguage = language === 'pt-BR' ? 'en-US' : 'pt-BR';
+
+    dispatch(LanguageActions.setLanguage({language: newLanguage}));
+
+    i18n.defaultLocale = newLanguage;
+    i18n.locale = newLanguage;
+
     setLanguage(languageString);
     handlLanguageMenu();
-    await AsyncStorage.setItem('language', languageString);
   };
 
   return (
@@ -80,7 +108,9 @@ const ConfigModal: React.FC<iConfigModal> = ({
           <View style={style.centeredView}>
             <View style={style.modalView}>
               <View style={style.modalLine}>
-                <Text style={style.modalText}>Configurações</Text>
+                <Text style={style.modalText}>
+                  {i18n.t('initialscreen.configurations')}
+                </Text>
                 <Pressable onPress={() => setModalVisible(!modalVisible)}>
                   <CloseIcon />
                 </Pressable>
@@ -89,7 +119,9 @@ const ConfigModal: React.FC<iConfigModal> = ({
               <View style={{marginBottom: defaultTheme.size.size_s32}} />
 
               <View style={style.modalLine}>
-                <Text style={style.optionText}>Tema</Text>
+                <Text style={style.optionText}>
+                  {i18n.t('initialscreen.theme')}
+                </Text>
                 <Pressable style={style.option} onPress={() => changeTheme()}>
                   <Text style={style.themeText}>{theme}</Text>
                 </Pressable>
@@ -98,7 +130,9 @@ const ConfigModal: React.FC<iConfigModal> = ({
               <View style={{marginBottom: defaultTheme.size.size_s12}} />
 
               <View style={style.modalLine}>
-                <Text style={style.optionText}>Idioma</Text>
+                <Text style={style.optionText}>
+                  {i18n.t('initialscreen.language')}
+                </Text>
                 <Pressable
                   style={style.option}
                   onPress={() => handlLanguageMenu()}>
