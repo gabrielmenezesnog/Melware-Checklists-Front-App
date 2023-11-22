@@ -68,6 +68,13 @@ export const white = StyleSheet.create({
     fontSize: defaultTheme.fonts.font_size.font_size_f14,
     color: defaultTheme.colors.green.green_g6,
   },
+
+  errorMessage: {
+    fontFamily: defaultTheme.fonts.roboto.roboto_medium,
+    fontSize: defaultTheme.fonts.font_size.font_size_f14,
+    color: defaultTheme.colors.red.red_error,
+    marginTop: defaultTheme.size.size_s12,
+  },
 });
 
 export const dark = StyleSheet.create({
@@ -137,5 +144,12 @@ export const dark = StyleSheet.create({
     fontFamily: defaultTheme.fonts.roboto.roboto_medium,
     fontSize: defaultTheme.fonts.font_size.font_size_f14,
     color: defaultTheme.colors.green.green_g6,
+  },
+
+  errorMessage: {
+    fontFamily: defaultTheme.fonts.roboto.roboto_medium,
+    fontSize: defaultTheme.fonts.font_size.font_size_f14,
+    color: defaultTheme.colors.red.red_error,
+    marginTop: defaultTheme.size.size_s12,
   },
 });

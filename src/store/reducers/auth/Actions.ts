@@ -1,37 +1,41 @@
-import {userActionTypes} from './ActionTypes';
+import {authActionTypes} from './ActionTypes';
 
-export const UserActions = {
-  loginUser: (payload: any) => ({
-    type: userActionTypes.LOGIN_USER,
+export const AuthActions = {
+  signIn: (payload: any) => ({
+    type: authActionTypes.SIGN_IN_USER,
     payload,
   }),
 
   signInFail: (payload: any) => ({
-    type: userActionTypes.SIGN_IN_FAIL,
+    type: authActionTypes.SIGN_IN_FAIL,
     payload: payload,
   }),
 
-  successfulLogin: (payload: any) => ({
-    type: userActionTypes.SUCCESSFUL_LOGIN,
+  successfulSignIn: (payload: any) => ({
+    type: authActionTypes.SUCCESSFUL_SIGN_IN,
     payload,
   }),
 
   loggedOut: () => ({
-    type: userActionTypes.LOGGED_OUT,
+    type: authActionTypes.LOGGED_OUT,
   }),
 
   signUpUser: (payload: any) => ({
-    type: userActionTypes.SIGN_UP_USER,
+    type: authActionTypes.SIGN_UP_USER,
     payload,
   }),
 
   successfulSignUp: (payload: any) => ({
-    type: userActionTypes.SUCCESSFUL_SIGN_UP,
+    type: authActionTypes.SUCCESSFUL_SIGN_UP,
     payload,
   }),
 
   signUpFail: (payload: any) => ({
-    type: userActionTypes.SIGN_UP_FAIL,
+    type: authActionTypes.SIGN_UP_FAIL,
     payload: payload,
+  }),
+
+  clearErrorMessage: () => ({
+    type: authActionTypes.CLEAR_ERROR_MESSAGE,
   }),
 };

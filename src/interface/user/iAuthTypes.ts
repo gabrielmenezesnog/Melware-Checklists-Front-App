@@ -1,13 +1,13 @@
 export interface AuthState {
+  readonly user: User | null;
   readonly response: User | null;
   readonly loggedIn: boolean;
   readonly loading: boolean | null;
   readonly error: boolean | null;
   readonly message?: string | null;
-  data?: object | null;
 }
 
 export interface User {
-  user: string | null;
+  email: string | null;
   senha: string | null;
 }

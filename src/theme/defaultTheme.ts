@@ -7,6 +7,7 @@ export const defaultTheme = {
       green_g4: '#87FFA8',
       green_g5: '#4CF07A',
       green_g6: '#24CE53',
+      green_g6_op_50: 'rgba(36, 206, 83, 0.7)',
       green_g7: '#009228',
       green_g8: '#004D15',
       green_g9: '#002209',
@@ -32,6 +33,9 @@ export const defaultTheme = {
     white: {
       white_w1: '#FFF',
       white_w2: '#F7F7F7',
+    },
+    red: {
+      red_error: '#FF3737',
     },
   },
   fonts: {

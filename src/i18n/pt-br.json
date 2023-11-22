@@ -13,6 +13,8 @@
     "password": "senha",
     "show_password": "mostrar senha",
     "hide_password": "ocultar senha",
-    "continue": "continuar"
+    "continue": "continuar",
+    "email_not_found": "Email não encontrado",
+    "wrong_password": "Senha incorreta"
   }
 }

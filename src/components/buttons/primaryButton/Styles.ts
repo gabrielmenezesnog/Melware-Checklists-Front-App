@@ -12,6 +12,16 @@ export const white = StyleSheet.create({
     borderRadius: 6,
   },
 
+  mainContainerDisabled: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: defaultTheme.colors.green.green_g6_op_50,
+    width: '100%',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 6,
+  },
+
   buttonText: {
     fontFamily: defaultTheme.fonts.poppins.poppins_medium,
     fontSize: defaultTheme.fonts.font_size.font_size_f16,
@@ -25,6 +35,16 @@ export const dark = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: defaultTheme.colors.green.green_g6,
+    width: '100%',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 6,
+  },
+
+  mainContainerDisabled: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: defaultTheme.colors.green.green_g6_op_50,
     width: '100%',
     paddingHorizontal: 24,
     paddingVertical: 12,

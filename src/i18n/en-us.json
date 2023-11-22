@@ -12,6 +12,8 @@
     "password": "password",
     "show_password": "show password",
     "hide_password": "hide password",
-    "continue": "continue"
+    "continue": "continue",
+    "email_not_found": "Email not found",
+    "wrong_password": "Wrong password"
   }
 }

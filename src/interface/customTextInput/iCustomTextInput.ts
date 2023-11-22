@@ -3,4 +3,5 @@ export interface iCustomTextInput {
   setValue: (text: string) => void;
   placeholder?: string | undefined;
   isPassword?: boolean;
+  error?: boolean;
 }

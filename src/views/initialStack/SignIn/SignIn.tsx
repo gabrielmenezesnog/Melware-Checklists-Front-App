@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
-import {useSelector} from 'react-redux';
 
 // Libs
 import {useNavigation} from '@react-navigation/native';
@@ -12,31 +11,76 @@ import i18n from '../../../i18n';
 import {white, dark} from './Styles';
 import {defaultTheme} from '../../../theme/defaultTheme';
 
+// Redux
+import {useDispatch, useSelector} from 'react-redux';
+import {AuthActions} from '../../../store/reducers/auth/Actions';
+
 // Components
 import PrimaryButton from '../../../components/buttons/primaryButton/PrimaryButton';
 import GetBackIcon from '../../../components/svg/icons/getBackIcon/GetBackIcon';
-import CustomTextInput from '../../../components/inputs/textInput/TextInput';
+import CustomTextInput from '../../../components/inputs/textInput/CustomTextInput';
 
 export const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isPasswordNotVisible, setIsPasswordNotVisible] = useState(true);
+  const [hasEmailWarn, setHasEmailWarn] = useState(false);
+  const [hasPasswordWarn, setHasPasswordWarn] = useState(false);
+  const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const language = useSelector((state: any) => state.languageReducer.language);
   const theme = useSelector((state: any) => state.themeReducer.theme);
+  const auth = useSelector((state: any) => state.authReducer);
+
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const style = theme === 'dark' ? dark : white;
 
   i18n.defaultLocale = language;
   i18n.locale = language;
 
-  const onPressContinue = () => {};
-
   const path =
     theme === 'dark'
       ? require('../../../../public/img/backgroundDetail-blackTheme.png')
       : require('../../../../public/img/backgroundDetail-whiteTheme.png');
+
+  const errorMessage = auth.message;
+
+  useEffect(() => {
+    switch (errorMessage) {
+      case 'email_not_found': {
+        setHasEmailWarn(true);
+        setIsLoading(false);
+        break;
+      }
+
+      case 'wrong_password': {
+        setHasPasswordWarn(true);
+        setIsLoading(false);
+        break;
+      }
+
+      default: {
+        setHasEmailWarn(false);
+        setHasPasswordWarn(false);
+      }
+    }
+  }, [errorMessage]);
+
+  useEffect(() => {
+    if (email.length > 0 && password.length > 0) {
+      setIsLoginButtonDisabled(false);
+    } else {
+      setIsLoginButtonDisabled(true);
+    }
+  }, [email, password]);
+
+  const onPressContinue = () => {
+    dispatch(AuthActions.signIn({user: {email, password}}));
+    setIsLoading(true);
+  };
 
   return (
     <View style={style.mainContainer}>
@@ -52,6 +96,7 @@ export const SignIn = () => {
         placeholder={i18n.t('signInScreen.email')}
         value={email}
         setValue={setEmail}
+        error={hasEmailWarn}
       />
 
       <View style={{marginBottom: defaultTheme.size.size_s20}} />
@@ -61,6 +106,7 @@ export const SignIn = () => {
         value={password}
         setValue={setPassword}
         isPassword={isPasswordNotVisible}
+        error={hasPasswordWarn}
       />
 
       <Pressable
@@ -78,7 +124,13 @@ export const SignIn = () => {
       <PrimaryButton
         text={i18n.t('signInScreen.continue')}
         onPress={() => onPressContinue()}
+        isDisabled={isLoginButtonDisabled}
+        loading={isLoading}
       />
+
+      <Text style={style.errorMessage}>
+        {errorMessage ? i18n.t(`signInScreen.${errorMessage}`) : null}
+      </Text>
 
       <Image source={path} style={style.backgroundDetail} />
     </View>
