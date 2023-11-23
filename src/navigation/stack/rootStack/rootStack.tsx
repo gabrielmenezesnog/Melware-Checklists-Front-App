@@ -2,8 +2,8 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 // Views da stack
-import Dashboard from '../../../views/privateStack/Dashboard/Dashboard';
 import {InitialStackStackNavigation} from '../initialStack/initialStack';
+import {BottomTabs} from '../../bottomTabs/Index';
 
 export const RootStackStackNavigation = ({loggedIn}: {loggedIn: boolean}) => {
   const RootStack = createStackNavigator();
@@ -15,7 +15,7 @@ export const RootStackStackNavigation = ({loggedIn}: {loggedIn: boolean}) => {
         headerShown: false,
       }}>
       {loggedIn ? (
-        <RootStack.Screen name="Dashboard" component={Dashboard} />
+        <RootStack.Screen name="BottomTabs" component={BottomTabs} />
       ) : (
         <RootStack.Screen
           name="CheckLists"

@@ -30,12 +30,14 @@ export const AuthReducer: Reducer<AuthState> = (
       return Object.assign({}, state, {
         response: action.payload,
         loggedIn: true,
+        user: null,
       });
 
     case authActionTypes.SIGN_IN_FAIL:
       return Object.assign({}, state, {
         loggedIn: false,
         message: action.payload.message,
+        user: null,
       });
 
     case authActionTypes.LOGGED_OUT:
@@ -52,12 +54,14 @@ export const AuthReducer: Reducer<AuthState> = (
         response: action.payload,
         loggedIn: true,
         message: null,
+        user: null,
       });
 
     case authActionTypes.SIGN_UP_FAIL:
       return Object.assign({}, state, {
         loggedIn: false,
         message: action.payload.message,
+        user: null,
       });
 
     case authActionTypes.SET_ERROR_MESSAGE:

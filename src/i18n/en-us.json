@@ -31,5 +31,11 @@
     "continue": "continue",
     "email_already_registered": "Email already registered",
     "password_dont_match": "Passwords do not match"
+  },
+
+  "dashboard": {
+    "hello": "Hello",
+    "what_you_gonna_do_today": "What you gonna do today?",
+    "your_lists": "your lists"
   }
 }

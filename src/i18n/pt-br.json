@@ -32,5 +32,11 @@
     "continue": "continuar",
     "email_already_registered": "Email já cadastrado",
     "password_dont_match": "As senhas não coincidem"
+  },
+
+  "dashboard": {
+    "hello": "Olá",
+    "what_you_gonna_do_today": "O que você vai fazer hoje?",
+    "your_lists": "suas listas"
   }
 }
