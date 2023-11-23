@@ -43,7 +43,7 @@ export const AuthReducer: Reducer<AuthState> = (
 
     case authActionTypes.SIGN_UP_USER:
       return Object.assign({}, state, {
-        response: action.payload,
+        user: action.payload.user,
         message: null,
       });
 
@@ -57,6 +57,11 @@ export const AuthReducer: Reducer<AuthState> = (
     case authActionTypes.SIGN_UP_FAIL:
       return Object.assign({}, state, {
         loggedIn: false,
+        message: action.payload.message,
+      });
+
+    case authActionTypes.SET_ERROR_MESSAGE:
+      return Object.assign({}, state, {
         message: action.payload.message,
       });
 

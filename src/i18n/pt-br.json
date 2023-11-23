@@ -16,5 +16,21 @@
     "continue": "continuar",
     "email_not_found": "Email não encontrado",
     "wrong_password": "Senha incorreta"
+  },
+
+  "signUpScreen": {
+    "sign_up": "faça parte",
+    "name": "nome",
+    "last_name": "sobrenome",
+    "email": "email",
+    "password": "senha",
+    "repeat_password": "repetir senha",
+    "show_password": "mostrar senha",
+    "show_passwords": "mostrar senhas",
+    "hide_password": "ocultar senha",
+    "hide_passwords": "ocultar senhas",
+    "continue": "continuar",
+    "email_already_registered": "Email já cadastrado",
+    "password_dont_match": "As senhas não coincidem"
   }
 }

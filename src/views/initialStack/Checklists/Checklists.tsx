@@ -23,11 +23,13 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 type RootStackParamList = {
   SignIn: undefined;
+  SignUp: undefined;
 };
 
 type SignInScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'SignIn'
+  'SignIn',
+  'SignUp'
 >;
 
 export const Checklists = () => {
@@ -45,7 +47,11 @@ export const Checklists = () => {
   const onPressSignIn = () => {
     navigation.navigate('SignIn');
   };
-  const onPressSignUp = () => {};
+
+  const onPressSignUp = () => {
+    navigation.navigate('SignUp');
+  };
+
   const onPressConfig = () => {
     setModalVisible(!modalVisible);
   };

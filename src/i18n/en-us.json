@@ -15,5 +15,21 @@
     "continue": "continue",
     "email_not_found": "Email not found",
     "wrong_password": "Wrong password"
+  },
+
+  "signUpScreen": {
+    "sign_up": "sign up",
+    "name": "name",
+    "last_name": "last name",
+    "email": "email",
+    "password": "password",
+    "repeat_password": "repeteat password",
+    "show_password": "show password",
+    "show_passwords": "show passwords",
+    "hide_password": "hide password",
+    "hide_passwords": "hide passwords",
+    "continue": "continue",
+    "email_already_registered": "Email_already registered",
+    "password_dont_match": "Passwords do not match"
   }
 }

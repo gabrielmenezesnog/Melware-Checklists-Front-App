@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 // Views da stack
 import Checklists from '../../../views/initialStack/Checklists/Checklists';
 import SignIn from '../../../views/initialStack/SignIn/SignIn';
+import SignUp from '../../../views/initialStack/SignUp/SignUp';
 
 export const InitialStackStackNavigation = () => {
   const InitialStack = createStackNavigator();
@@ -32,6 +33,7 @@ export const InitialStackStackNavigation = () => {
       <InitialStack.Screen name="Checklists" component={Checklists} />
 
       <InitialStack.Screen name="SignIn" component={SignIn} />
+      <InitialStack.Screen name="SignUp" component={SignUp} />
     </InitialStack.Navigator>
   );
 };

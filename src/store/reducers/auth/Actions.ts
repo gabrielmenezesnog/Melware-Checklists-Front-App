@@ -20,7 +20,7 @@ export const AuthActions = {
     type: authActionTypes.LOGGED_OUT,
   }),
 
-  signUpUser: (payload: any) => ({
+  signUp: (payload: any) => ({
     type: authActionTypes.SIGN_UP_USER,
     payload,
   }),
@@ -32,6 +32,11 @@ export const AuthActions = {
 
   signUpFail: (payload: any) => ({
     type: authActionTypes.SIGN_UP_FAIL,
+    payload: payload,
+  }),
+
+  setErrorMessage: (payload: any) => ({
+    type: authActionTypes.SET_ERROR_MESSAGE,
     payload: payload,
   }),
 
