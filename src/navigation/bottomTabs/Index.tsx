@@ -19,7 +19,7 @@ export const BottomTabs = () => {
     tabBarStyle: {
       backgroundColor:
         theme === 'dark'
-          ? defaultTheme.colors.black.black_b2
+          ? defaultTheme.colors.gray.gray_g9
           : defaultTheme.colors.black.black_b1,
       height: defaultTheme.size.size_s60,
       borderRadius: defaultTheme.round.round_r6,
@@ -27,6 +27,8 @@ export const BottomTabs = () => {
       marginBottom: defaultTheme.size.size_s12,
       position: 'absolute' as const,
       bottom: 10,
+
+      elevation: 1,
     },
   };
 
