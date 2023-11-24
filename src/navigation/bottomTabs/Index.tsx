@@ -22,7 +22,7 @@ export const BottomTabs = () => {
           ? defaultTheme.colors.black.black_b2
           : defaultTheme.colors.black.black_b1,
       height: defaultTheme.size.size_s60,
-      borderRadius: defaultTheme.round.round_max,
+      borderRadius: defaultTheme.round.round_r6,
       marginHorizontal: defaultTheme.size.size_s20,
       marginBottom: defaultTheme.size.size_s12,
       position: 'absolute' as const,

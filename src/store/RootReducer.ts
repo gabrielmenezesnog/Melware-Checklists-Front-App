@@ -1,12 +1,14 @@
 import {combineReducers} from 'redux';
+import authReducer from './reducers/auth/Reducer';
 import languageReducer from './reducers/language/Reducer';
 import themeReducer from './reducers/theme/Reducer';
-import authReducer from './reducers/auth/Reducer';
+import taskListReducer from './reducers/taskList/getAllByUserId/Reducer';
 
 const rootReducer = combineReducers({
+  authReducer,
   languageReducer,
   themeReducer,
-  authReducer,
+  taskListReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

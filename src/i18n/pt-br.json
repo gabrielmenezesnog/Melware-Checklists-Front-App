@@ -37,6 +37,7 @@
   "dashboard": {
     "hello": "Olá",
     "what_you_gonna_do_today": "O que você vai fazer hoje?",
-    "your_lists": "suas listas"
+    "your_lists": "suas listas",
+    "no_lists": "Quando você tiver uma lista de tarefas, ela aparecerá aqui 😉"
   }
 }

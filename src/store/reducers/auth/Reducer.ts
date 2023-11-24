@@ -24,6 +24,7 @@ export const AuthReducer: Reducer<AuthState> = (
       return Object.assign({}, state, {
         user: action.payload.user,
         message: null,
+        loading: true,
       });
 
     case authActionTypes.SUCCESSFUL_SIGN_IN:
@@ -31,6 +32,7 @@ export const AuthReducer: Reducer<AuthState> = (
         response: action.payload,
         loggedIn: true,
         user: null,
+        loading: false,
       });
 
     case authActionTypes.SIGN_IN_FAIL:
@@ -38,6 +40,7 @@ export const AuthReducer: Reducer<AuthState> = (
         loggedIn: false,
         message: action.payload.message,
         user: null,
+        error: true,
       });
 
     case authActionTypes.LOGGED_OUT:
@@ -55,6 +58,7 @@ export const AuthReducer: Reducer<AuthState> = (
         loggedIn: true,
         message: null,
         user: null,
+        loading: false,
       });
 
     case authActionTypes.SIGN_UP_FAIL:
@@ -62,6 +66,7 @@ export const AuthReducer: Reducer<AuthState> = (
         loggedIn: false,
         message: action.payload.message,
         user: null,
+        error: true,
       });
 
     case authActionTypes.SET_ERROR_MESSAGE:
