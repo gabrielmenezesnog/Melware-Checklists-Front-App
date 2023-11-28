@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {defaultTheme} from '../../theme/defaultTheme';
+import {defaultTheme} from '../../../theme/defaultTheme';
 
 const {height: height, width: width} = Dimensions.get('window');
 
@@ -28,7 +28,7 @@ export const white = StyleSheet.create({
 
   opacity: {
     backgroundColor: defaultTheme.colors.black.black_op_50,
-    zIndex: 1,
+    zIndex: 2,
     width: width,
     height: height,
     position: 'absolute',
@@ -52,6 +52,7 @@ export const white = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     position: 'relative',
+    marginBottom: defaultTheme.size.size_s20,
   },
 
   option: {
@@ -94,6 +95,10 @@ export const white = StyleSheet.create({
     color: defaultTheme.colors.gray.gray_g6,
     textAlign: 'center',
   },
+
+  buttonContainer: {
+    width: '45%',
+  },
 });
 
 export const dark = StyleSheet.create({
@@ -121,7 +126,7 @@ export const dark = StyleSheet.create({
 
   opacity: {
     backgroundColor: defaultTheme.colors.black.black_op_50,
-    zIndex: 1,
+    zIndex: 2,
     width: width,
     height: height,
     position: 'absolute',
@@ -131,6 +136,7 @@ export const dark = StyleSheet.create({
     fontFamily: defaultTheme.fonts.poppins.poppins_medium,
     color: defaultTheme.colors.gray.gray_g2,
     fontSize: defaultTheme.fonts.font_size.font_size_f16,
+    marginBottom: defaultTheme.size.size_s12,
   },
 
   optionText: {
@@ -145,6 +151,7 @@ export const dark = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     position: 'relative',
+    marginBottom: defaultTheme.size.size_s20,
   },
 
   option: {
@@ -186,5 +193,9 @@ export const dark = StyleSheet.create({
     fontFamily: defaultTheme.fonts.roboto.roboto_regular,
     color: defaultTheme.colors.gray.gray_g2,
     textAlign: 'center',
+  },
+
+  buttonContainer: {
+    width: '45%',
   },
 });

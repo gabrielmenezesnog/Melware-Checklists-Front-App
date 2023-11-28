@@ -1,5 +1,9 @@
 import React, {useEffect} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
+
+// Libs
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 // Styles;
 import {white, dark} from './Styles';
@@ -9,38 +13,87 @@ import i18n from '../../../i18n';
 
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
-import {TaskListActions} from '../../../store/reducers/taskList/getAllByUserId/Actions';
+import {TaskListActions} from '../../../store/reducers/taskList/Actions';
 
 //Components
 import DashboardHeader from '../../../components/headers/dashboardHeader/DashboardHeader';
 import TaskListCard from '../../../components/cards/taskListCard/TaskListCard';
+import {RefreshControl, ScrollView} from 'react-native-gesture-handler';
+import {defaultTheme} from '../../../theme/defaultTheme';
+
+type PrivateStackParamList = {
+  TaskList: {taskList: any};
+};
+
+type SignInScreenNavigationProp = StackNavigationProp<
+  PrivateStackParamList,
+  'TaskList'
+>;
 
 export const Dashboard = () => {
-  const theme = useSelector((state: any) => state.themeReducer.theme);
-  const style = theme === 'dark' ? dark : white;
+  const [refreshing, setRefreshing] = React.useState(false);
 
-  const authReducer = useSelector((state: any) => state.authReducer);
-  const user = useSelector((state: any) => state.authReducer.response.response);
+  const theme = useSelector((state: any) => state.themeReducer.theme);
+  const updateResponse = useSelector(
+    (state: any) => state.taskListReducer.updateResponse,
+  );
+  const deleteResponse = useSelector(
+    (state: any) => state.taskListReducer.deleted,
+  );
   const taskLists = useSelector((state: any) => state.taskListReducer.response);
+  const {loading, response} = useSelector((state: any) => state.authReducer);
 
   const dispatch = useDispatch();
+  const navigation = useNavigation<SignInScreenNavigationProp>();
+
+  const {idUser, token} = response.response;
+  const userName = response.response.person.name;
+
+  const style = theme === 'dark' ? dark : white;
+
+  const hasCheckListsContent = taskLists?.length > 0;
 
   useEffect(() => {
-    if (authReducer.loading === false) {
-      dispatch(
-        TaskListActions.getTaskLists({userId: user.id, token: user.token}),
-      );
+    if (loading === false) {
+      dispatch(TaskListActions.getTaskLists({userId: idUser, token}));
     }
-  }, [dispatch, authReducer, user]);
+  }, [
+    dispatch,
+    loading,
+    idUser,
+    token,
+    refreshing,
+    updateResponse,
+    deleteResponse,
+  ]);
+
+  const handleSelectList = (taskList: any) => {
+    navigation.navigate('TaskList', {taskList});
+  };
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   return (
     <ScrollView
       bounces={false}
       showsVerticalScrollIndicator={false}
-      overScrollMode="never">
+      overScrollMode="never"
+      style={{backgroundColor: defaultTheme.colors.white.white_w2}}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={[defaultTheme.colors.green.green_g6]}
+        />
+      }>
       <View style={style.mainContainer}>
         <DashboardHeader
-          title={`${i18n.t('dashboard.hello')}, ${user?.person?.name}`}
+          title={`${i18n.t('dashboard.hello')}, ${userName}`}
           subtitle={i18n.t('dashboard.what_you_gonna_do_today')}
         />
 
@@ -52,16 +105,19 @@ export const Dashboard = () => {
             </Text>
           </View>
 
-          {taskLists?.length === 0 && (
+          {hasCheckListsContent ? (
+            taskLists?.map((taskList: any, index: number) => (
+              <TaskListCard
+                key={index}
+                taskList={taskList}
+                selectList={() => handleSelectList(taskList)}
+              />
+            ))
+          ) : (
             <Text style={style.taskListCard}>
               {i18n.t('dashboard.no_lists')}
             </Text>
           )}
-
-          {taskLists?.length > 0 &&
-            taskLists?.map((item: any, index: number) => {
-              return <TaskListCard taskList={item} key={index} />;
-            })}
         </View>
       </View>
     </ScrollView>

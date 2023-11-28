@@ -4,6 +4,7 @@ import {defaultTheme} from '../../../theme/defaultTheme';
 export const white = StyleSheet.create({
   mainContainer: {
     backgroundColor: defaultTheme.colors.black.black_b1,
+    paddingHorizontal: defaultTheme.size.size_s40,
   },
 
   title: {
@@ -12,7 +13,6 @@ export const white = StyleSheet.create({
     lineHeight: defaultTheme.fonts.font_size.font_size_f40 * 1.5,
     color: defaultTheme.colors.gray.gray_g1,
     marginTop: defaultTheme.size.size_s60,
-    marginHorizontal: defaultTheme.size.size_s40,
     marginBottom: 4,
   },
 
@@ -21,7 +21,6 @@ export const white = StyleSheet.create({
     fontSize: defaultTheme.fonts.font_size.font_size_f16,
     lineHeight: defaultTheme.fonts.font_size.font_size_f16 * 1.2,
     color: defaultTheme.colors.gray.gray_g4,
-    marginHorizontal: defaultTheme.size.size_s40,
     marginBottom: defaultTheme.size.size_s20,
   },
 });

@@ -38,5 +38,17 @@
     "what_you_gonna_do_today": "What you gonna do today?",
     "your_lists": "your lists",
     "no_lists": "When you have a to-do list, it will appear here 😉"
+  },
+
+  "taskList": {
+    "created_in": "created in",
+    "opened_items": "opened items",
+    "closed_items": "closed items",
+    "edit_name": "Edit title",
+    "placeholder": "new title",
+    "save": "save",
+    "confirm_delete": "Confirm deletion?",
+    "yes": "yes",
+    "no": "no"
   }
 }

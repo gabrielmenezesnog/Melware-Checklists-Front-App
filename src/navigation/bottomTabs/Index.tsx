@@ -4,10 +4,10 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // Navigations
-import Dashboard from '../../views/privateStack/Dashboard/Dashboard';
 import HomeIcon from '../../components/svg/icons/homeIcon/HomeIcon';
 import {defaultTheme} from '../../theme/defaultTheme';
 import {useSelector} from 'react-redux';
+import {PrivateStackStackNavigation} from '../stack/privateStack/privateStackStac';
 
 export const BottomTabs = () => {
   const Tab = createBottomTabNavigator();
@@ -40,7 +40,7 @@ export const BottomTabs = () => {
       let icon;
 
       switch (route.name) {
-        case 'Dashboard':
+        case 'DashboardBottom':
           icon = <HomeIcon active={focused} />;
           break;
       }
@@ -50,10 +50,10 @@ export const BottomTabs = () => {
   });
 
   return (
-    <Tab.Navigator initialRouteName="Dashboard">
+    <Tab.Navigator initialRouteName="DashboardBottom">
       <Tab.Screen
-        name="Dashboard"
-        component={Dashboard}
+        name="DashboardBottom"
+        component={PrivateStackStackNavigation}
         options={getScreenOptions}
       />
     </Tab.Navigator>

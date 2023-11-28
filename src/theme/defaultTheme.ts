@@ -36,6 +36,11 @@ export const defaultTheme = {
     },
     red: {
       red_error: '#FF3737',
+      red_error_op: '#FFD1D1',
+    },
+    blue: {
+      blue_b1: '#BCE7FF',
+      blue_b2: '#00A3FF',
     },
   },
   fonts: {

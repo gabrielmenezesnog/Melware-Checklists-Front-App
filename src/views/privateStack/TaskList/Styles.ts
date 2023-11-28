@@ -6,11 +6,13 @@ export const white = StyleSheet.create({
     flex: 1,
     backgroundColor: defaultTheme.colors.black.black_b1,
     marginBottom: defaultTheme.size.size_s80,
+    position: 'relative',
   },
 
   listSection: {
     backgroundColor: defaultTheme.colors.white.white_w2,
     height: '100%',
+
     padding: defaultTheme.size.size_s40,
   },
 
@@ -58,22 +60,30 @@ export const white = StyleSheet.create({
     }),
   },
 
-  configIcon: {
+  taskActions: {
     position: 'absolute',
-    top: '5%',
-    right: '10%',
+    top: '8%',
+    right: '8%',
+    zIndex: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
   },
 });
 
 export const dark = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: defaultTheme.colors.green.green_g9,
+    backgroundColor: defaultTheme.colors.black.black_b1,
+    marginBottom: defaultTheme.size.size_s80,
+    position: 'relative',
   },
 
   listSection: {
     backgroundColor: defaultTheme.colors.black.black_b1,
     height: '100%',
+
     padding: defaultTheme.size.size_s40,
   },
 
@@ -119,5 +129,16 @@ export const dark = StyleSheet.create({
         elevation: 1.5,
       },
     }),
+  },
+
+  taskActions: {
+    position: 'absolute',
+    top: '8%',
+    right: '8%',
+    zIndex: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
   },
 });

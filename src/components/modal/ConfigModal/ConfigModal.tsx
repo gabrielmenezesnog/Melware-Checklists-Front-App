@@ -2,18 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {Modal, Text, Pressable, View} from 'react-native';
 
 // Language
-import i18n from '../../i18n';
+import i18n from '../../../i18n';
 
 // Styles;
 import {white, dark} from './Styles';
-import CloseIcon from '../svg/icons/closeIcon/CloseIcon';
-import {defaultTheme} from '../../theme/defaultTheme';
+import CloseIcon from '../../svg/icons/closeIcon/CloseIcon';
+import {defaultTheme} from '../../../theme/defaultTheme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Redux
 import {useDispatch} from 'react-redux';
-import {ThemeActions} from '../../store/reducers/theme/Actions';
-import {LanguageActions} from '../../store/reducers/language/Actions';
+import {ThemeActions} from '../../../store/reducers/theme/Actions';
+import {LanguageActions} from '../../../store/reducers/language/Actions';
 
 interface iConfigModal {
   modalVisible: boolean;

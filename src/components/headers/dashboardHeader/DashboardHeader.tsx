@@ -1,5 +1,6 @@
 import React from 'react';
 import {Platform, StatusBar, Text, View} from 'react-native';
+import TextTicker from 'react-native-text-ticker';
 
 // Styles;
 import {white, dark} from './Styles';
@@ -16,7 +17,16 @@ const DashboardHeader: React.FC<iDashboardHeader> = ({title, subtitle}) => {
     <View style={style.mainContainer}>
       {Platform.OS === 'android' && <StatusBar hidden />}
 
-      <Text style={style.title}>{title}</Text>
+      <TextTicker
+        style={style.title}
+        duration={10000}
+        repeatSpacer={0}
+        marqueeDelay={0}
+        bounce
+        loop>
+        {title}
+      </TextTicker>
+
       <Text style={style.subtitle}>{subtitle}</Text>
     </View>
   );

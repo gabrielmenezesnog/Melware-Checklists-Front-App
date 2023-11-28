@@ -18,7 +18,7 @@ import MelwareLogo from '../../../components/svg/logo/melware/MelwareLogo';
 import PrimaryButton from '../../../components/buttons/primaryButton/PrimaryButton';
 import SecondaryButton from '../../../components/buttons/secondaryButton/SecondaryButton';
 import ConfigIcon from '../../../components/svg/icons/wireIcon/WireIcon';
-import ConfigModal from '../../../components/modal/ConfigModal';
+import ConfigModal from '../../../components/modal/ConfigModal/ConfigModal';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 type RootStackParamList = {

@@ -11,7 +11,7 @@ export const white = StyleSheet.create({
     paddingHorizontal: defaultTheme.size.size_24,
     paddingVertical: defaultTheme.size.size_s12,
     borderRadius: defaultTheme.round.round_r1,
-
+    minHeight: 50,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -36,7 +36,7 @@ export const white = StyleSheet.create({
     fontFamily: defaultTheme.fonts.roboto.roboto_medium,
     fontSize: defaultTheme.fonts.font_size.font_size_f14,
     lineHeight: defaultTheme.fonts.font_size.font_size_f14 * 1.2,
-    color: defaultTheme.colors.gray.gray_g7,
+    color: defaultTheme.colors.gray.gray_g6,
     maxWidth: '60%',
   },
 
@@ -44,7 +44,7 @@ export const white = StyleSheet.create({
     fontFamily: defaultTheme.fonts.roboto.roboto_medium,
     fontSize: defaultTheme.fonts.font_size.font_size_f12,
     lineHeight: defaultTheme.fonts.font_size.font_size_f12 * 1.2,
-    color: defaultTheme.colors.gray.gray_g5,
+    color: defaultTheme.colors.gray.gray_g4,
   },
 });
 
@@ -58,7 +58,7 @@ export const dark = StyleSheet.create({
     paddingHorizontal: defaultTheme.size.size_24,
     paddingVertical: defaultTheme.size.size_s12,
     borderRadius: defaultTheme.round.round_r1,
-
+    minHeight: 50,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -39,5 +39,17 @@
     "what_you_gonna_do_today": "O que você vai fazer hoje?",
     "your_lists": "suas listas",
     "no_lists": "Quando você tiver uma lista de tarefas, ela aparecerá aqui 😉"
+  },
+
+  "taskList": {
+    "created_in": "criada em",
+    "opened_items": "itens abertos",
+    "closed_items": "itens concluídos",
+    "edit_name": "Editar título",
+    "placeholder": "novo título",
+    "save": "salvar",
+    "confirm_delete": "Confirmar exclusão?",
+    "yes": "sim",
+    "no": "não"
   }
 }
